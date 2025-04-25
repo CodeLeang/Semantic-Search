@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Semantic Search</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        input[type="text"] { width: 60%; padding: 10px; margin-right: 10px; }
+        button { padding: 10px 20px; }
+        .result { margin-top: 20px; padding: 10px; border-bottom: 1px solid #ccc; }
+        .score { font-size: 0.9em; color: gray; }
+    </style>
+</head>
+<body>
+    <h2>Search SBERT</h2>
+    <form method="post">
+        <input type="text" name="query" placeholder="Enter your query..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% for sentence, score in results %}
+        <div class="result">
+            <p>{{ sentence }}</p>
+            <p class="score">Cosine similarity: {{ "%.4f" | format(score) }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
